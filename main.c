@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h> 
 
+/*teste*/
+
     typedef struct CampoMinado
     {
         int eBomba;
