@@ -22,7 +22,6 @@ for(l=0; l<tam; l++){
     }
 }
 }
-
 //procedimento para sortear n bombas
 void sortearBombas(int n){
     int i;
@@ -34,6 +33,7 @@ void sortearBombas(int n){
             jogo[l][c].eBomba =1;
         else
             i--;
+            
     }
 
 }
