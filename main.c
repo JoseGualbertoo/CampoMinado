@@ -37,10 +37,60 @@ void sortearBombas(int n){
         else
             i--;
     }
+/*
+Função que diz se um par de coordenadas é válido ou não
+1 - é valido
+0 - não é válido
+*/
+int coordenadaEhValida(int l, int c){
+    if(l>=0 && l<tam && c>=0 && c<tam){
+        return 1;
+    }else{
+        return 0;
+    }
+
+}
+
+
+/*
+Função que retorna a quantidade de bombas na vizinhança de l e c
+n - quantidade de bombas
+*/
+int quantBombasVizinhas(int l, int c){
+    /*l-1 e c
+      l+1 e c
+      l e c+1
+      l e c-1
+    */
+   int quantidade = 0;
+   if(coordenadaEhValida(l-1, c) && jogo[l-1][c].eBOmba){
+     quantidade++;   
+   }
+   if(coordenadaEhValida(l+1, c) && jogo[l+1][c].eBOmba){
+     quantidade++;   
+   }
+   if(coordenadaEhValida(l, c+1) && jogo[l][c+1].eBOmba){
+     quantidade++;   
+   }
+   if(coordenadaEhValida(l, c-1) && jogo[l][c-1].eBOmba){
+     quantidade++;   
+   }
+   return quantidade;
+}
+
+//procediemnto para contar as bombas vizinhas
+void contarBombas(){
+    for(l=0; l<tam; l++){
+        for(c=0;c<tam;c++){
+            jogo[l][c].vizinhos = quantBombasVizinhas(l,c);
+        }
+    }
+}
 
 }
    int main(){ 
     inicializarJogo();
     sortearBombas(10);
+    contarBombas();
     return 0;
  }
