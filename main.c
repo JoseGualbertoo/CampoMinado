@@ -110,7 +110,38 @@ void imprimir(){
         printf("\n\t   -----------------------------------------\n");
     }
 }
+//procedimento para abrir a coordenada digitada pelu usuário
+void abrirCelula(int l, int c){
+	if(coordenadaEhValida(l,c)==1 && jogo[l][c].estaAberta == 0);
+	jogo[l][c].estaAberta = 1;
+	if(jogo[l][c].vizinhos == 0){
+		/*
+		l- e c acima
+		l+ e c abaixo
+		l e c+1 direita
+		l e c-1 esquerda
+		*/
+		abrirCelula(l-1, c);
+		abrirCelula(l+1, c);
+		abrirCelula(l, c+1);
+		abrirCelula(l, c-1); 
+	}
+}
 
+//procedimento jogar que faz a leitura das coordendas
+void jogar(){
+	int linha, coluna;
+	
+	do{
+		printf("\nDigite as coordendas de linha e coluna: ");
+		scanf("%d%d, &linha, &coluna");
+		
+		if(coordenadaEhValida(linha, coluna)==)
+			printf("\nCoordenada invalida!");
+	}while(coordenadaEhValida(linha, coluna) == 0 || jogo[linha][coluna].estaAberta == 1);
+	
+	abrirCelula(linha, coluna);
+}
 
    int main(){ 
     inicializarJogo();
