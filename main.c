@@ -90,21 +90,24 @@ void contarBombas(){
 
 //procedimento para imprimir o jogo
 void imprimir(){
-    
+    printf("\n\n\t    ");
     for(l = 0; l < tam; l++)
-        printf("%d", l);
+        printf(" %d  ", l);//indices da coluna
+        printf("\n\t   -----------------------------------------\n");
     for(l=0; l<tam; l++){
+    	printf("\t %d |",l); 
         for(c=0;c<tam;c++){
             if(jogo[l][c].estaAberta){
                 if(jogo[l][c].eBomba)
-                    printf("*");
+                    printf(" * ");
                  else
                     printf("%d", jogo[l][c].vizinhos);
             }
             else
-                printf("");
+                printf("   ");
+            printf("|");
         }
-        printf("\n");
+        printf("\n\t   -----------------------------------------\n");
     }
 }
 
@@ -113,6 +116,8 @@ void imprimir(){
     inicializarJogo();
     sortearBombas(10);
     contarBombas();
+    printf("\n\t\t\tCAMPO MINADO");
     imprimir();
+    
     return 0;
  }
