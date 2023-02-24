@@ -87,10 +87,31 @@ void contarBombas(){
     }
 }
 
+//procedimento para imprimir o jogo
+void imprimir(){
+    
+    for(l = 0; l < tam; l++)
+        printf("%d", l);
+    for(l=0; l<tam; l++){
+        for(c=0;c<tam;c++){
+            if(jogo[l][c].estaAberta){
+                if(jogo[l][c].eBomba)
+                    printf("*");
+                 else
+                    printf("%d", jogo[l][c].vizinhos);
+            }
+            else
+                printf("");
+        }
+        printf("\n");
+    }
+}
+
 }
    int main(){ 
     inicializarJogo();
     sortearBombas(10);
     contarBombas();
+    imprimir();
     return 0;
  }
